@@ -18,6 +18,7 @@ md5sum -b *.* > FILE.md5                                                   #make
 sudo /etc/init.d/networking restart                                        #restart the Network interface deamon
 nslookup WWW                                                               #look up IP with WWW host
 sudo sed -i 's/OLD-WORD/NEW-WORD/g' FILE-NAME                              #replace OLD-WORD with NEW-WORD in file with name FILE as ROOT
+      (sed can also use 's:OLD-PATTERN:NEW-PATTERN:g')
 sudo mount SERVER-ADDY:/LocalRepos LOCAL-MOUNT-DIR                         #mount remote SERVER-ADDY:/LocalRepos into the local LOCAL-MOUNT-DIR
 chown NEWUSER FILE                                                         #change owner of FILE to NEWUSER. MUST BE ROOT!!!!
 sudo dhclient ADAPTER							   #release and renew the lease for ADAPTER
@@ -42,11 +43,9 @@ cat /proc/cpuinfo							#print out a list of information about your processor
 grep NR_CPUS /boot/config-`uname -r`		#grab the MAX number of processors suported by KERNEL
 dmesg |grep processor						#find the Number of processors in a system
 lscpu										#indepth processor info including 64 bit compatability
---------------------------------------------------------------------------------------------------------------------------
+
 iperf -s -p 65000						           #on machine1 (host, this one will receive)
 iperf -c [ip of server] -p 65000				           #on machine2 (client, this one will upload)
-
-
 
 
 ----------------------------------------------------------------- FIREWALL RULES ---------------------------------------------------------
@@ -61,5 +60,12 @@ tar -cf - PATH/TO/FILE | pv -s $(du -sb . | awk '{print $1}') | nc -l PORT #serv
 
 
 sudo arp-scan --interface=eth1 --localnet #scan all addresses localnet using eth1 grabs fingerprint for mac IDs
+
+
+______________________________________ Hard drive Clone and Virtualization ___________________________________________
+
+dd if=/dev/sdb of=dd-image.raw                                                #Clones the /dev/sdb drive
+VBoxManage convertdd dd-image.raw sda.vdi --format VDI --variant Fixed        #Convert clone to Virtual drive
+
 ```
 

@@ -56,7 +56,7 @@ iptables -A INPUT -m mac ! --mac-source MAC:ADDRSS:HERE -j DROP            #MAC 
 _________________________________________________________ server / client file transfers _________________________
 
 nc EXAMPLE.COM PORT | pv | tar -xf -			#Client side to download with a speed bar on it
-tar -cf - PATH/TO/FILE | pv -s $(du -sb . | awk '{print $1}') | nc -l PORT #server side with ETA
+tar -cf - PATH/TO/FILE | pv -s $(du -sb PATH/TO/FILE | awk '{print $1}') | nc -l PORT #server side with ETA
 
 
 sudo arp-scan --interface=eth1 --localnet #scan all addresses localnet using eth1 grabs fingerprint for mac IDs

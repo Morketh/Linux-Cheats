@@ -51,7 +51,7 @@ I think Python + BS4 is a good fit for this since we can scrape the required dat
 
 INITIAL DATA DUMP FROM WEB SITE
 
-IF title is "<title>Not Found" there is no data beyond this point on the page
+IF title is ```<title>Not Found``` there is no data beyond this point on the page
 
 ```
 <div id="title">

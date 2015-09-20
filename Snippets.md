@@ -13,7 +13,7 @@ ipmi-sensors | awk '/Temperature/{print}'
 
 ##find Zero Length files and remove them
 
-``bash
+```bash
 find . -size 0c -delete
 ```
 

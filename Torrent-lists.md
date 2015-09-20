@@ -24,6 +24,7 @@ magnet:?xt=urn:btih:19e53b6485d0487d0babeae9c4c600a5eda71f74
 awk '/<title>/,/<leechers>/{print}' rich.xml | grep --ignore-case "REGEX" -A 4 | sed 's:<\/magnet>::g' | sed 's:<magnet>:magnet\:?xt=urn\:btih\::g'
 ```
 
+```
 <torrent>
 <id>3234495</id>
 <title>[Request] Bamse - Världens starkaste björn.DivX</title>
@@ -42,12 +43,14 @@ Finns det fler bamse-filmer vore det skoj ifall de kom upp på trackern. :bounce
 </comments>
 
 </torrent>
-
+```
 
 
 
 I think Python + BS4 is a good fit for this since we can scrape the required data and place into a MySQL database (See Icemelt)
+
 INITIAL DATA DUMP FROM WEB SITE
+
 IF title is "<title>Not Found" there is no data beyond this point on the page
 
 ```
@@ -81,13 +84,18 @@ The whole Pirate Bay magnet archive</div>
 938802790A385C49307F34CCA4C30F80B03DF59C
  </dl>
 ```
+
 another torrent file had this format:
+
 3519077|Star Trek DS9 S7D1|4642166784|1|0|8aff8ea107b84f77fb0b47ce311739339af125a4
+
 something|Title|
 
 This will print out a table with magnet links and torrent names
 
+```bash
 cat complete | grep "[Ss]earch [Tt]erm" | awk -F "|" '{print $2,"<>magnet:?xt=urn:btih:"$6}' | awk -F "<>" -f "col.awk"
+```
 
 col.awk
 ```awk

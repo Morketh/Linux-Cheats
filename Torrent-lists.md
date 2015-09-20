@@ -1,7 +1,8 @@
 
-## COUNT directory tree sort and chop the list and display the last value (works with named torrent files)
+COUNT directory tree sort and chop the list and display the last value (works with named torrent files)
+```bash
 clear && ls -shal | awk '{print $10}' | sed -e 's:torrent-::g' | sort -n | tail -n 1
-
+```
 
 
 ```bash

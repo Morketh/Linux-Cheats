@@ -76,3 +76,30 @@ Finns det fler bamse-filmer vore det skoj ifall de kom upp på trackern. :bounce
 # <dt>Info Hash:</dt><dd></dd>
 # 938802790A385C49307F34CCA4C30F80B03DF59C
 # </dl>
+
+another torrent file had this format:
+3519077|Star Trek DS9 S7D1|4642166784|1|0|8aff8ea107b84f77fb0b47ce311739339af125a4
+something|Title|
+
+This will print out a table with magnet links and torrent names
+
+cat complete | grep "[Ss]earch [Tt]erm" | awk -F "|" '{print $2,"<>magnet:?xt=urn:btih:"$6}' | awk -F "<>" -f "col.awk"
+
+col.awk
+```awk
+{
+    width=65;
+    separator="";
+
+    for (i=1; i<=NF; i++) {
+        if (match($i, /[-+]*[0-9]+[\.]*[0-9]*/)) {
+            printf("%"width"s", $i);
+        }
+        else {
+            printf("%-"width"s", $i);
+        }
+        if (i == NF) printf("\n");
+        else printf("%s", separator);
+    }
+}
+```

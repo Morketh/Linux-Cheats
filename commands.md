@@ -67,5 +67,9 @@ ______________________________________ Hard drive Clone and Virtualization _____
 dd if=/dev/sdb of=dd-image.raw                                                #Clones the /dev/sdb drive
 VBoxManage convertdd dd-image.raw sda.vdi --format VDI --variant Fixed        #Convert clone to Virtual drive
 
+______________________________________ A/V Converstion ___________________________________________
+
+for f in *.mkv; do avconv -i "$f" -codec copy "${f%.mkv}.mp4"; done
+
 ```
 

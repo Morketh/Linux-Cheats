@@ -71,5 +71,6 @@ ______________________________________ A/V Converstion _________________________
 
 for f in *.mkv; do avconv -i "$f" -codec copy "${f%.mkv}.mp4"; done
 
+curl http://URL_HERE | grep "[Mm][Pp]3" | sed 's:FILTER_TO_STRIP::g' | sed 's:PATTERN_TO_STRIP::g' | sed 's|.*:|http:|g' > MP3Links.txt
 ```
 

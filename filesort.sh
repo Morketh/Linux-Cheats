@@ -32,3 +32,6 @@ done
 diff=$SECONDS
 echo "$var Files found and orginized in:"
 echo "$(($diff / 3600)) hours, $((($diff / 60) % 60)) minutes and $(($diff % 60)) seconds."
+
+echo "cleaning up empty directories....."
+find . -type d -size 0c -delete

@@ -1,0 +1,1 @@
+printf '%q\n' ./* | grep SEARCH_STRING | xargs -I {} rm -rfv {}

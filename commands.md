@@ -35,6 +35,7 @@ sudo restart squid                                                         #rest
 
 tar xvzf file.tgz						           #will unzip FILE.tgz
 tar -zxvf file.tar.gz							   # will extract everything from file.tar.gz
+tar -zcvf tarfile.tar.gz -C /path/to/foldername_tocompress  # Compress Entire directory with Subdirectories
 dpkg --get-selections | grep php					#this will grab the installed list and then filter it for a single package
 dpkg -L php5-gd										#this will locate all the files for a specific package
 

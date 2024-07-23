@@ -8,7 +8,7 @@ from getpass import getpass
 #os.remove("token")
 
 try:
-    sk = skpy.Skype("admiralmorketh","x9SSQzeMGhg6gKA","token")
+    sk = skpy.Skype("pass","pass","token")
 except skpy.core.SkypeAuthException as e:
     print("Error: {}".format(e))
     exit()
